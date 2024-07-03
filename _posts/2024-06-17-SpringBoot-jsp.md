@@ -190,6 +190,50 @@ public class UserController {
 
 - 이 두 script tag는 모듈화와 유지보수성을 보장하고 브라우저가 외부 스크립트를 먼저 로드한 후 사용자 정의 스크립트를 실행하도록 하기 위해 분리되어야 한다.
 
+<br/>
+
+#### $(...).valid is not a function
+
+- .valid 함수가 존재하지 않는다는 의미를 가지며, 해당 함수를 포함한 플러그인을 추가해야 한다.
+- 버전 충돌이 일어날 수 있으니 주의해야 한다.
+<br/>
+- 아래는 버전 충돌이 발생했던 플러그인이다. 검색한 내용을 마구잡이로 복붙하다보니 두 가지 버전의 jQuery가 포함되었다.
+
+```jsp
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7/jquery.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+```
+
+- 아래의 플러그인으로 변경하였더니 에러가 발생하지 않았다.
+
+```jsp
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/jquery.validation/1.19.3/jquery.validate.min.js"></script>
+```
+
+
+#### $(...).ajaxSubmit is not a function
+
+- 위와 동일한 문제이나, 다른 플러그인이 필요하다.
+- 아래는 오류를 해결하기 위해 추가한 플러그인이다.
+
+```jsp
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.form/4.3.0/jquery.form.min.js"></script>
+```
+
+결과적으로, 포함한 외부 플러그인은 아래와 같다.
+
+```jsp
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.form/4.3.0/jquery.form.min.js"></script>
+<script src="https://unpkg.com/jquery-validation@1.19.3/dist/jquery.validate.min.js"></script>
+```
+
+##### not a function 참고
+[OKKY - ajaxSubmit is not a function](https://okky.kr/questions/617180)<br/>
+[stackoverflow - $("#form1").validate is not a function](https://stackoverflow.com/questions/1871424/form1-validate-is-not-a-function)<br/>
+[$.ajax / $.ajaxForm / $.ajaxSubmit is not a function](https://forthenextstep.tistory.com/227)<br/>
+
 ---
 
 <br/>
