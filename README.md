@@ -35,6 +35,7 @@
   - DB
   - React
   - Github
+  - SVN
   - Spring Boot
   - WEB
 
