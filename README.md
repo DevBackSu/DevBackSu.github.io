@@ -41,6 +41,8 @@
 
 - Blog
 
+- IDEA
+
 - Project
   - Roomie
   - WebGame
