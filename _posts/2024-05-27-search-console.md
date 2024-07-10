@@ -184,6 +184,12 @@ image:
 7. 다음처럼 모든 항목에 체크 표시가 되어 있으면 문제가 없다.
     ![naver](/assets/img/post_img/searchconsole/naver8.png)
     <br/>
+8. Search Console처럼 sitemap을 등록한다.
+    ![url](/assets/img/post_img/searchconsole/naverurl.png)
+    <br/>
+9. 웹 페이지 수집 요청도 했다.
+    ![url](/assets/img/post_img/searchconsole/naverurl2.png)
+    <br/>
 
 ---
 
