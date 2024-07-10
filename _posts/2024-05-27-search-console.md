@@ -121,7 +121,7 @@ image:
 
 
 
-10. URL을 등록하지 않으면 Search Console에 등록이 되어 있어도 구글에서 검색되지 않는다. 이를 위해 URL검색에서 본인의 블로그 주소 (필자는 https://devbacksu.github.io 를 입력했다.)를 검색한다. 이후 **색인 생성 요청** 을 클릭하면 아래의 사진처럼 색인 생성을 시작한다.
+10. 기본적으로 sitemap만 등록하면 검색이 되지만 아닌 경우도 있다. 만약 검색이 되지 않는다면 다음의 방법을 시도해보아야 한다. 우선 URL검색에서 본인의 블로그 주소 (필자는 https://devbacksu.github.io 를 입력했다.)를 검색한다. 이후 **색인 생성 요청** 을 클릭해 직접 색인을 요청한다.
     
     ![url](/assets/img/post_img/searchconsole/url.png)
 
