@@ -207,7 +207,7 @@ public class UserController {
 - 아래의 플러그인으로 변경하였더니 에러가 발생하지 않았다.
 
 ```jsp
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7/jquery.js"></script>
 <script src="https://cdn.jsdelivr.net/jquery.validation/1.19.3/jquery.validate.min.js"></script>
 ```
 
