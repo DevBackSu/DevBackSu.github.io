@@ -49,6 +49,8 @@ tags: [github, pin, github-stats-box, lang-box]
     - Note의 이름은 사용자가 알아보기 쉽게 설정하면 된다.
     - Select scopes의 경우, 해당 token을 fork 받은 repository의 gist에서 활용할 것이기 때문에 repo와 gist를 선택해야 한다.
     - 발급 시 아래의 화면으로 페이지가 넘어가는데, 검은색으로 줄이 쳐져 있는 곳이 token이다. 토큰 값은 페이지를 벗어나면 찾을 수 없으니 꼭 어딘가에 남겨두는 것이 좋다.
+    - 필자의 경우, 토큰이 만료되니 Action에서 Run Error가 발생했다. 만약 토큰을 재발급하는 과정이 번거롭게 느껴진다면 **No expiration**을 설정하는 것을 추천한다.
+      - **No expiration**을 설정하면 github에서 **보안을 위해 만료 기한을 설정하라** 라는 의미의 경고문을 띄운다.
     ![token](/assets/img/post_img/pin/token-success.png)
     <br/>
 3. [gist](https://gist.github.com/)에서 gist를 생성한다.

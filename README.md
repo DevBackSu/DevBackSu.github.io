@@ -23,7 +23,7 @@
 
 # Categories List
 #### chirpy 기본 categories (추후 삭제)
-- Blog
+- Blogging
   - Demo
   - Tutorial
 
