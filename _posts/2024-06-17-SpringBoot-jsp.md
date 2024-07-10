@@ -211,6 +211,8 @@ public class UserController {
 <script src="https://cdn.jsdelivr.net/jquery.validation/1.19.3/jquery.validate.min.js"></script>
 ```
 
+- 특히 jquery.validate.min.js 라이브러리가 없으면 .valid() 사용 시 오류가 발생한다.
+
 
 #### $(...).ajaxSubmit is not a function
 
