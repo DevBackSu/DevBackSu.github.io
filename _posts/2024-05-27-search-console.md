@@ -90,17 +90,17 @@ image:
 
 7. 이후 http://localhost:4000/sitemap.xml 에 접속하면 sitemap.xml 파일 내용 확인할 수 있다. 이 xml 파일을 복사해서 Gemfile의 위치에 동일한 이름의 파일을 생성한 후 붙여 넣기 한 후 같은 위치에 robots.txt[^footnote]를 넣어야 한다. (내 경우, robots.txt가 assets 폴더 내에 있어서 아래의 경로로 이동시켰다.)
 
-    | ![Desktop View](/assets/img/post_img/searchconsole/sitemap.png) | ![Desktop View](/assets/img/post_img/searchconsole/robots.png)  |
-    | :--------------------------- | :--------------- |
-    | sitemap.xml과 robots.txt 위치 |  robots.txt 내용  |
+    | ![Desktop View](/assets/img/post_img/searchconsole/sitemap.png) | ![Desktop View](/assets/img/post_img/searchconsole/robots.png) |
+    | :-------------------------------------------------------------- | :------------------------------------------------------------- |
+    | sitemap.xml과 robots.txt 위치                                   | robots.txt 내용                                                |
 
 
-    | robots.txt 변수명 | 설명 |
-    | :------------------- | :---------------------------------- |
-    | User-agent | robots.txt에서 지정하는 크롤링 규칙이 적용되어야 할 크롤러를 지정한다. *은 모든 검색 엔진 로봇의 접근 허용을 뜻한다. (크롤러명 : 구글 (Googlebot) / 네이버 (Yeti) / 다음 (Daum) 등) |
-    | Disallow | 크롤링을 제한할 경로 |
-    | Allow | 크롤링을 허용하는 경로 |
-    | Sitemap | sitemap 경로 |
+    | robots.txt 변수명 | 설명                                                                                                                                                                                |
+    | :---------------- | :---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+    | User-agent        | robots.txt에서 지정하는 크롤링 규칙이 적용되어야 할 크롤러를 지정한다. *은 모든 검색 엔진 로봇의 접근 허용을 뜻한다. (크롤러명 : 구글 (Googlebot) / 네이버 (Yeti) / 다음 (Daum) 등) |
+    | Disallow          | 크롤링을 제한할 경로                                                                                                                                                                |
+    | Allow             | 크롤링을 허용하는 경로                                                                                                                                                              |
+    | Sitemap           | sitemap 경로                                                                                                                                                                        |
     
     <br/>
 
@@ -117,6 +117,22 @@ image:
 
     ![Desktop View](/assets/img/post_img/searchconsole/success_sitemap.png){:width="800" height="500"}
     ![Desktop View](/assets/img/post_img/searchconsole/sitemap_list.png){:width="800" height="400"}
+    <br/>
+
+
+
+10. URL을 등록하지 않으면 Search Console에 등록이 되어 있어도 구글에서 검색되지 않는다. 이를 위해 URL검색에서 본인의 블로그 주소 (필자는 https://devbacksu.github.io 를 입력했다.)를 검색한다. 이후 **색인 생성 요청** 을 클릭하면 아래의 사진처럼 색인 생성을 시작한다.
+    
+    ![url](/assets/img/post_img/searchconsole/url.png)
+
+    테스트가 끝나고 색인 생성 요청 요청이 완료되면 아래의 창이 뜬다.
+
+    ![url](/assets/img/post_img/searchconsole/url2.png)
+
+    닫기를 누르면 색인이 요청된 상태로만 뜨다가 10분 정도 기다리면 색인 등록이 완료된다.
+
+    ![url](/assets/img/post_img/searchconsole/url3.png)
+    ![url](/assets/img/post_img/searchconsole/url4.png)
     <br/>
 
 
@@ -254,8 +270,8 @@ image:
 #### IF
 
 | ![](/assets/img/post_img/searchconsole/content_err.png) | ![](/assets/img/post_img/searchconsole/page_err.png) |
-| :----- | :------- |
-| search console 오류 | 브라우저에서 sitemap.xml 검색 시 오류 |
+| :------------------------------------------------------ | :--------------------------------------------------- |
+| search console 오류                                     | 브라우저에서 sitemap.xml 검색 시 오류                |
 
 만약 모두 시도한 이후에도 위와 같은 에러가 발생할 경우
 
