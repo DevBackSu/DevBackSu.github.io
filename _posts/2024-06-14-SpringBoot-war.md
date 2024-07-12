@@ -29,7 +29,7 @@ tags: [Spring Boot, gradle, jar, war]
 
 <br/>
 
-# JAR vs. WAR
+# JAR vs WAR
 - JAR
     - 독립적인 실행이 가능한 애플리케이션을 구성할 때 사용하는 것을 추천한다.
     - 필자의 경우, 안드로이드와 협업을 할 때, 안드로이드에서 사용할 API를 개발하여 JAR 파일로 패키징을 했다.
