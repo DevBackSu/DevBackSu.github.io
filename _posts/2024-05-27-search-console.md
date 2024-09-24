@@ -2,6 +2,8 @@
 title: Search Console
 categories: [Blog]
 tags: [search console, google, daum, naver, github, blog]
+description: >-
+    Google의 search console, Naver의 search advisor, Daum의 검색 등록
 image:
     path : /assets/img/post_img/searchconsole/google_logo.png
     alt : Google Search Console LOGO

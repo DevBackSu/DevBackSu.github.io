@@ -2,6 +2,8 @@
 # layout : post - 기본적으로 설정되어 있는 변수
 title: Spring boot 패키지 문제
 date: 2024-05-20 10:20:00 +0900
+description: >-
+    spring boot 경로 문제
 categories: [Project, Roomie]
 tags: [spring, react, project, js, java]
 ---

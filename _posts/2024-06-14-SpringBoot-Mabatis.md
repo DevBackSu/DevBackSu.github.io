@@ -5,6 +5,8 @@ tags: [Spring Boot, gradle, mybatis]
 image:
     path : /assets/img/post_img/mybatis/mybatis.png
     alt : MyBatis Logo
+description: >-
+    Spring boot에 MyBatis 세팅하기
 ---
 
 # 주요 SKILL

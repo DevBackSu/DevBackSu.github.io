@@ -1,5 +1,7 @@
 ---
 title: Favicon 설정
+description: >-
+    주소창 아이콘 변경하기
 categories: [Blog]
 tags: [github, blog, favicon]
 ---
