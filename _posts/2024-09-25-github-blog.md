@@ -247,6 +247,10 @@ _sass/addon/commons.scss를 수정하면 사이드바를 설정할 수 있다. c
 
 사이드바의 색상값은 typography-dark.scss와 typography-light.scss에 정의되어 있다. 다크 모드에는 dark 파일의 설정값이, 화이트 모드에는 light 파일의 설정값이 적용된다.
 
+<br/>
+
+사용하지 않는 SNS가 있고, 그 로고가 사이드바에 뜨는 게 마음에 들지 않는다면 _includes/pageviews/sidebar.html을 수정하면 된다. 코드 내부에서 삭제하고 싶은 로고의 이름을 검색하고, 그 부분을 주석 처리하거나 삭제하자.
+
 ## 5. 완료
 
 모든 설정을 완료했다면 다시 push한다.
@@ -276,7 +280,7 @@ _sass/addon/commons.scss를 수정하면 사이드바를 설정할 수 있다. c
 
 <br/>
 
-post의 카테고리나 태그에 null or 0이 있을 경우 발생한다. 이와 같은 값을 넣기 위해서는 '' or ""로 문자열 표시를 해주어야 한다.
+post의 카테고리나 태그에 null or 0이 있을 경우 발생한다. 이와 같은 값을 넣기 위해서는 ' ' or " "로 문자열 표시를 해주어야 한다.
 
 ---
 
