@@ -251,6 +251,10 @@ _sass/addon/commons.scss를 수정하면 사이드바를 설정할 수 있다. c
 
 사용하지 않는 SNS가 있고, 그 로고가 사이드바에 뜨는 게 마음에 들지 않는다면 _includes/pageviews/sidebar.html을 수정하면 된다. 코드 내부에서 삭제하고 싶은 로고의 이름을 검색하고, 그 부분을 주석 처리하거나 삭제하자.
 
+<br/>
+
+기본적으로 설정되어 있는 SNS 외 다른 SNS를 등록하고 싶다면 _data/contack.yml 을 수정하자. 필자는 twitter를 주석 처리하고 linkedin의 주석을 풀었다. 추가로 sidebar.html을 수정해 twitter 부분을 linkedin으로 변경했다.
+
 ## 5. 완료
 
 모든 설정을 완료했다면 다시 push한다.
