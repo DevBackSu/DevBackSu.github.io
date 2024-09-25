@@ -204,7 +204,7 @@ _data/locales에 있는 파일 중 선택하면 된다. 필자는 한국어로 �
 
 귀여운 우주인 이미지가 있는 부분이다. /assets/img 아래 경로에 해당 이미지를 저장한 후, 이미지 경로를 넣어주면 된다.
 
-#### toc
+#### Toc 설정
 
 ![toc](/assets/img/post_img/blog_img/toc.png)<br/>
 
