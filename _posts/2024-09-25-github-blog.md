@@ -6,14 +6,16 @@ description: >-
     jekyll chirpy theme로 github 블로그 만들기
 ---
 
-# [jekyll](https://jekyllrb.com/)
+# 개념
+
+## [jekyll](https://jekyllrb.com/)
 
 - Github의 공동 설립자인 톰 프레스턴 워너가 개발한 정적 웹 사이트 생성기
 - Ruby 언어 기반
 - MIT
 
 
-# Github Pages
+## Github Pages
 
 - Github를 통해 호스트되고 게시되는 Public 웹 페이지
 - Jekyll 테마 적용 가능
@@ -93,9 +95,10 @@ git push 전, chirpy 테마는 몇 가지 삭제 및 변경해야 하는 파일�
 
 1. docs 폴더 삭제
 2. .github 내 workflows 폴더 외 전부 삭제
-3. .github/workflows/starter/pages-deploy.yml 파일을 확인하고 확장자에 .hook이 있다면 .hook 삭제
-4. pages-deploy.yml 파일을 열어서 branches를 main만 사용할  수 있도록 변경
-5. .gitignore에서 # Misc 아래 부분을 주석 처리 한다. (dist가 속한 부분 모두 주석 처리)
+3. .github/workflows/ 아래에 starter 폴더 외 전부 삭제
+4. .github/workflows/starter/pages-deploy.yml 파일을 확인하고 확장자에 .hook이 있다면 .hook 삭제
+5. pages-deploy.yml 파일을 열어서 branches를 main만 사용할  수 있도록 변경
+6. .gitignore에서 # Misc 아래 부분을 주석 처리 한다. (dist가 속한 부분 모두 주석 처리)
 
 ![pages-deploy](/assets/img/post_img/blog_img/page.png)
 
@@ -115,7 +118,9 @@ git push 전, chirpy 테마는 몇 가지 삭제 및 변경해야 하는 파일�
 
 위 화면 중 이름 등의 프로필 부분은 필자가 수정한 내용이다.
 
-## 4. _config.yml 수정하기
+## 4. 커스터마이징
+
+### 1. _config.yml 수정하기
 
 config 파일을 수정하여 위 이미지처럼 이름 등을 커스터마이징 해보자. 필자가 수정한 부분은 아래와 같다.
 
@@ -179,32 +184,76 @@ baseurl: ""
 
 ```
 
-### lang
+#### lang
 
 _data/locales에 있는 파일 중 선택하면 된다. 필자는 한국어로 설정했는데 번역이 마음에 들지 않거나 영어로 설정하는게 더 예쁘다고 판단된 부분이 있어서 ko-KR.yml을 수정했다. 내부 코드가 어렵지 않아서 쉽게 변경할 수 있다.
 
-### theme_mode
+#### theme_mode
 
 모드 전환 버튼을 설정하고 싶다면 해당 부분을 비워두어야 한다. 만약 한 가지의 모드를 설정한다면 모드 전환 버튼은 보이지 않는다.<br/>
 기본 모드는 light다.
 
-### cdn
+#### cdn
 
 만약 이 위치에 어떠한 경로를 입력하면 이미지를 해당 경로에서 조회한다. 즉, "https://cdn"을 적어두었다고 하자. 이후 게시글에 이미지를 첨부하기 위해 /assets/img/img.png를 넣는다면 블로그는 https://cdn/assets/img/img.png를 찾게 된다.<br/>
 따라서 cdn 서버가 없다면 비워두어야 한다.
 
-### toc
+#### avatar
+
+![avatar](/assets/img/post_img/blog_img/avatar.png)<br/>
+
+귀여운 우주인 이미지가 있는 부분이다. /assets/img 아래 경로에 해당 이미지를 저장한 후, 이미지 경로를 넣어주면 된다.
+
+#### toc
 
 ![toc](/assets/img/post_img/blog_img/toc.png)<br/>
 
 포스트의 오른쪽에 위치하는 목차를 표시할 지 말지를 결정한다.
 
-### comments
+#### comments
 
 사용할 댓글 기능 설정을 입력하는 부분이다. 필자는 giscus를 사용할 것이다.<br/>
 [Giscus 사용하기](https://devbacksu.github.io/posts/comment/)
 
 
+### 2. 사이드바 설정하기
+
+_sass/addon/commons.scss를 수정하면 사이드바를 설정할 수 있다. commons 파일의 666 line 정도에 주석으로 **/* --- sidebar layout --- */**라고 되어 있는 부분이 있는데, 이 아래를 수정해야 한다. 필자는 아래와 같이 수정했다.
+
+```scss
+#sidebar {
+  @include pl-pr(0);
+
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100%;
+  overflow-y: auto;
+  width: $sidebar-width;
+  z-index: 99;
+  background-image: url('/assets/img/main_img/man.png');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  border-right: 1px solid var(--sidebar-border-color);
+
+  ...
+}
+```
+
+변경 전 코드는 `background: var(--sidebar-bg);` 이다. 만약 이미지 파일로 설정하고 싶지 않다면 --sidebar-bg 값을 원하는 색상으로 변경하면 되고, 이미지 파일을 넣고 싶다면 위 코드처럼 변경하면 된다.
+
+<br/>
+
+사이드바의 색상값은 typography-dark.scss와 typography-light.scss에 정의되어 있다. 다크 모드에는 dark 파일의 설정값이, 화이트 모드에는 light 파일의 설정값이 적용된다.
+
+## 5. 완료
+
+모든 설정을 완료했다면 다시 push한다.
+
+![end](/assets/img/post_img/blog_img/end.png)<br/>
+
+액션이 완료된 후 5분 정도 대기했다가 사이트에 들어가 새로고침을 하면 설정이 적용된 것을 확인할 수 있다.
 
 
 # ERR
@@ -228,3 +277,11 @@ _data/locales에 있는 파일 중 선택하면 된다. 필자는 한국어로 �
 <br/>
 
 post의 카테고리나 태그에 null or 0이 있을 경우 발생한다. 이와 같은 값을 넣기 위해서는 '' or ""로 문자열 표시를 해주어야 한다.
+
+---
+
+# 참고
+
+[평생 무료로 개인 블로그 운영하기](https://www.peterkimzz.com/github-pages-nuxtjs)<br/>
+[나만의 블로그 만들기](https://supermemi.tistory.com/entry/%EB%82%98%EB%A7%8C%EC%9D%98-%EB%B8%94%EB%A1%9C%EA%B7%B8-%EB%A7%8C%EB%93%A4%EA%B8%B0-Git-hub-blog-GitHubio)<br/>
+[초보자를 위한 github 블로그 만들기 시리즈](https://wlqmffl0102.github.io/posts/Making-Git-blogs-for-beginners-2/)<br/>
