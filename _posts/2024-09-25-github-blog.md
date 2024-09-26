@@ -38,24 +38,22 @@ description: >-
 
 - [jekyll-themes](https://jekyll-themes.com/)
 - [Free Jekyll themes](https://jekyllthemes.io/free)
+
 <br/>
+
 위는 Jekyll 테마 list를 보여주는 사이트다. 마음에 드는 테마를 골라보자.<br/>
 필자는 [jekyll-theme-chirpy](https://github.com/cotes2020/jekyll-theme-chirpy)를 선택했다.<br/>
-테마를 선택했다면 저장소를 clone한 위치에 해당 테마의 압축 파일을 풀거나 해당 테마의 저장소를 clone하여 pull 받는다.<br/>
+테마를 선택했다면 저장소를 clone한 위치에 해당 테마의 압축 파일을 풀거나 해당 테마의 저장소를 clone하여 pull 받는다.
 <br/>
 이후의 이슈 (~.min.js)를 대비하기 위해 저장소 위치에서 `bash tools/init`를 실행해 asset/js/dist/를 빌드하자.
 
 ## 3. Ruby 설치
 
 Jekyll은 Ruby로 만들어졌기 때문에 해당 프로그래밍 언어를 설치해야 한다. [Ruby Installer](https://rubyinstaller.org/downloads/)에 들어가 필요한 버전을 선택해 다운로드 하자.<br/>
-만약 어떤 버전을 설치해야 할 지 모르겠다면 추천 버전을 설치하거나 선택한 테마가 사용하는 버전을 설치하면 된다.<br/>
-
+만약 어떤 버전을 설치해야 할 지 모르겠다면 추천 버전을 설치하거나 선택한 테마가 사용하는 버전을 설치하면 된다.
 <br/>
-
 테마의 버전은 .github/workflows/starter/pages-deploy.yml에서 확인할 수 있다.
-
 <br/>
-
 설치 후 **Start Command Prompt with Ruby**를 실행해 저장소가 clone된 디렉터리 위치로 이동한다. 필자의 경우, C 드라이브 내 blog로 clone 했기 때문에 C:\blog. 즉, `cd C:\blog` 로 이동했다.
 
 ```text
@@ -79,12 +77,8 @@ bundle exec jekyll serve
 ```
 
 위 명령을 통해 bundle을 install하고 아래 명령어로 jekyll을 실행한다. 이후 출력되는 주소 ([http://127.0.0.1:4000/](http://127.0.0.1:4000/))에서 세팅한 테마가 실행되면 성공이다.
-
 <br/>
-
-만약 실행 도중 노란색 경고문이 출력된다면 이는 ~.min.js 파일이 존재하지 않기 때문이라서 `npm install`과 `npm build`를 실행하면 된다.
-
-<br/>
+만약 실행 도중 노란색 경고문이 출력된다면 이는 ~.min.js 파일이 존재하지 않기 때문이라서 `npm install`과 `npm build`를 실행하면 된다.<br/>
 
 [해당 이슈 참고](https://velog.io/@lzlko/github-%EB%B8%94%EB%A1%9C%EA%B7%B8)
 
@@ -253,7 +247,8 @@ _sass/addon/commons.scss를 수정하면 사이드바를 설정할 수 있다. c
 
 <br/>
 
-기본적으로 설정되어 있는 SNS 외 다른 SNS를 등록하고 싶다면 _data/contack.yml 을 수정하자. 필자는 twitter를 주석 처리하고 linkedin의 주석을 풀었다. 추가로 sidebar.html을 수정해 twitter 부분을 linkedin으로 변경했다.
+기본적으로 설정되어 있는 SNS 외 다른 SNS를 등록하고 싶다면 _data/contack.yml 을 수정하자. 필자는 twitter를 주석 처리하고 linkedin의 주석을 풀었다. 추가로 sidebar.html을 수정해 twitter 부분을 linkedin으로 변경했다.<br/>
+참고로, contack.yml 내에 있는 순서대로 sidebar의 SNS 아이콘이 생성된다.
 
 ## 5. 완료
 

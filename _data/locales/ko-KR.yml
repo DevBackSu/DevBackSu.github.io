@@ -53,13 +53,13 @@ notification:
 
 post:
   written_by: By
-  posted: posted
-  updated: update
+  posted: 작성일
+  updated: 수정일
   words: words
   pageview_measure: 조회
   read_time:
-    unit: 분
-    prompt: 읽는 시간
+    unit: min
+    prompt: read
   relate_posts: 관련된 글
   share: 공유하기
   button:
@@ -80,5 +80,5 @@ df:
 
 # categories page
 categories:
-  category_measure: 카테고리
-  post_measure: 포스트
+  category_measure: categories
+  post_measure: Posts
