@@ -467,6 +467,10 @@ _Image Caption_
 ```markdown
 // url : https://www.youtube.com/watch?v=mQ8k4T5wVgE
 {% include embed/youtube.html id='mQ8k4T5wVgE' %}
+
+↓
+
+`{% include embed/youtube.html id='mQ8k4T5wVgE' %}`
 ```
 
 ↓
@@ -477,6 +481,7 @@ _Image Caption_
 
 ---
 
+<br/>
 
 [^footnote]: `[^footnote]` 로 설정했다. 하단 footnote 설명은 `[^footnote]: `로 시작할 수 있고, :는 [대괄호]에 붙여야 인식된다.
 [^fn-nth-2]: `[^fn-nth-2]` 로 설정했다.
