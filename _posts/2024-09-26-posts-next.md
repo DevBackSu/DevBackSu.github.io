@@ -195,8 +195,6 @@ mermaid: true
 
 ### Footnote
 
-Click the hook will locate the footnote[^footnote], and here is another footnote[^fn-nth-2].
-
 footnote[^footnote]로 설정한 단어의 오른쪽 상단 숫자를 클릭하면 하단의 설명 부분으로 이동된다. footnote는 `[^footnote]` 등으로 설정할 수 있으며, footnote[^fn-nth-2]마다 다른 이름을 붙여주어야 한다.
 
 ### Inline code
