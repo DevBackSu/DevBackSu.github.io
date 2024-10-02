@@ -462,15 +462,16 @@ _Image Caption_
 
 ### 동영상
 
-아래는 유투브의 영상을 첨부하는 방법이다. id값은 url 뒤쪽, v= 다음에 있는 문자열을 넣으면 된다.
+아래는 유투브의 영상을 첨부하는 방법이다. id값은 url 뒤쪽, v= 다음에 있는 문자열을 넣으면 된다.<br/>
+<br/>
+
+`{ % include embed/youtube.html id='mQ8k4T5wVgE' % }`
+
+위 코드를 코드 블럭에 넣으면 아래와 같이 나타난다. 인라인 코드와 같은 방식으로 사용하면 된다. 단, {}과 % 사이의 띄어쓰기는 지워야 한다.
 
 ```markdown
 // url : https://www.youtube.com/watch?v=mQ8k4T5wVgE
 {% include embed/youtube.html id='mQ8k4T5wVgE' %}
-
-↓
-
-`{% include embed/youtube.html id='mQ8k4T5wVgE' %}`
 ```
 
 ↓
