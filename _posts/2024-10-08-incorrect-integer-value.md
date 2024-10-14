@@ -72,7 +72,7 @@ set @@global.sql_mode = 'ONLY_FULL_GROUP_BY,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_F
 
 ### 2. 타입 변경하기
 
-테이블의 likeNum의 데이터 유형을 varchar / char로 변경해면 오류가 발생하지 않는다. 혹은 DTO의 타입을 변경하는 것도 방법이 될 수 있다.
+테이블의 likeNum의 데이터 유형을 varchar / char로 변경해면 오류가 발생하지 않는다. 혹은 DTO의 타입을 변경하는 것도 방법이 될 수 있다. 필자는 실서버가 아닌 테스트용 사이트를 열기 위한 작업 중 위의 오류를 발견하기도 했고, 동일한 DB를 다른 곳에서도 사용하고 있었기 때문에 DTO의 타입을 변경했다.
 
 
 ## 참고
