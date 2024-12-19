@@ -93,3 +93,196 @@ https://httpd.apache.org/docs/2.4/programs/httpd.html
 https://askubuntu.com/questions/33640/kworker-what-is-it-and-why-is-it-hogging-so-much-cpu
 https://austindhkim.tistory.com/43
 https://community.frame.work/t/tracking-kworker-stuck-at-near-100-cpu-usage-with-ubuntu-22-04/23053
+
+
+--------
+스케쥴러
+
+1. 최초 코드드
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+		xmlns:p="http://www.springframework.org/schema/p" xmlns:context="http://www.springframework.org/schema/context"
+		xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+							http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.0.xsd">
+	
+	<bean id="crsService" class="com.baemin.crs.service.impl.CrsServiceImpl" />
+	<bean id="smsSndgService" class="com.baemin.smssndg.service.impl.SmsSndgServiceImpl" />
+	<bean id="mngrService" class="com.baemin.mngr.service.impl.MngrServiceImpl" />
+
+	<bean id="usrCrsLrgNtfTrigger" 
+		class="org.springframework.scheduling.quartz.CronTriggerFactoryBean"
+		p:jobDetail-ref="usrCrsLrgNtfDetail"
+		p:cronExpression="0 42 15 1/1 * ? *" /> <!-- 매일 오전 17시   -->
+	 
+	<bean id="usrCrsLrgNtfDetail" 
+		class="org.springframework.scheduling.quartz.JobDetailFactoryBean"
+		p:jobClass="com.baemin.schedule.UsrCrsLrgNtfJob">
+		<property name="jobDataAsMap">
+			<map>
+				<entry key="crsService" value-ref="crsService" />
+				<entry key="smsSndgService" value-ref="smsSndgService" />
+			</map>
+		</property>
+		<property name="durability" value="true">
+		</property>
+	</bean>
+	
+	<bean id="mngrBatchTrigger" 
+		class="org.springframework.scheduling.quartz.CronTriggerFactoryBean"
+		p:jobDetail-ref="mngrBatchDetail"
+		p:cronExpression="0 0 1 1/1 * ? *" /> <!-- 매일 오전 1시   -->
+	 
+	<bean id="mngrBatchDetail" 
+		class="org.springframework.scheduling.quartz.JobDetailFactoryBean"
+		p:jobClass="com.baemin.schedule.MngrBatchJob">
+		<property name="jobDataAsMap">
+			<map>
+				<entry key="mngrService" value-ref="mngrService" />
+			</map>
+		</property>
+		<property name="durability" value="true">
+		</property>
+	</bean>
+	
+	<bean
+		class="org.springframework.scheduling.quartz.SchedulerFactoryBean">
+		<property name="triggers">
+			<list>
+				 <ref bean="usrCrsLrgNtfTrigger" />
+				<!--<ref bean="mngrBatchTrigger" />-->
+			</list>
+		</property>	
+	</bean>
+	
+</beans>
+
+-> 이거 하면 org.quartz.JobPersistenceException: 트리거에서 참조하는 작업(DEFAULT.XXJob)이 존재하지 않습니다. 오류 뜸
+
+2. 수정 ver
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+		xmlns:p="http://www.springframework.org/schema/p" xmlns:context="http://www.springframework.org/schema/context"
+		xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+							http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.0.xsd">
+	
+	<bean id="crsService" class="com.baemin.crs.service.impl.CrsServiceImpl" />
+	<bean id="smsSndgService" class="com.baemin.smssndg.service.impl.SmsSndgServiceImpl" />
+	<bean id="mngrService" class="com.baemin.mngr.service.impl.MngrServiceImpl" />
+
+	<bean id="usrCrsLrgNtfTrigger" 
+		class="org.springframework.scheduling.quartz.CronTriggerFactoryBean"
+		p:jobDetail-ref="usrCrsLrgNtfDetail"
+		p:cronExpression="0 42 15 1/1 * ? *" /> <!-- 매일 오전 17시   -->
+	 
+	<bean id="usrCrsLrgNtfDetail" 
+		class="org.springframework.scheduling.quartz.JobDetailFactoryBean"
+		p:jobClass="com.baemin.schedule.UsrCrsLrgNtfJob">
+		<property name="jobDataAsMap">
+			<map>
+				<entry key="crsService" value-ref="crsService" />
+				<entry key="smsSndgService" value-ref="smsSndgService" />
+			</map>
+		</property>
+		<property name="durability" value="true">
+		</property>
+	</bean>
+	
+	<bean id="mngrBatchTrigger" 
+		class="org.springframework.scheduling.quartz.CronTriggerFactoryBean"
+		p:jobDetail-ref="mngrBatchDetail"
+		p:cronExpression="0 0 1 1/1 * ? *" /> <!-- 매일 오전 1시   -->
+	 
+	<bean id="mngrBatchDetail" 
+		class="org.springframework.scheduling.quartz.JobDetailFactoryBean"
+		p:jobClass="com.baemin.schedule.MngrBatchJob">
+		<property name="jobDataAsMap">
+			<map>
+				<entry key="mngrService" value-ref="mngrService" />
+			</map>
+		</property>
+		<property name="durability" value="true">
+		</property>
+	</bean>
+	
+	<bean
+		class="org.springframework.scheduling.quartz.SchedulerFactoryBean">
+        <property name="jobDetails">
+            <list>
+                <ref bean="usrCrsLrgNtfDetail">
+            </list>
+        </property>
+		<property name="triggers">
+			<list>
+				 <ref bean="usrCrsLrgNtfTrigger" />
+				<!--<ref bean="mngrBatchTrigger" />-->
+			</list>
+		</property>	
+	</bean>
+	
+</beans>
+
+-> 단순히 없다니까 추가함.
+-> 실행은 되는데 스케쥴러가 두 번 돎
+-> details랑 detail로 2번 등록이 되어 있어서 그렇다고도 하고 server.xml 설정에서 context가 두 개 생겨서 그렇다고도 하는데 이것저것 수정해도 실행이 안 되거나 두 번 돌기만 함
+
+
+3. 최종
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+		xmlns:p="http://www.springframework.org/schema/p" xmlns:context="http://www.springframework.org/schema/context"
+		xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+							http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.0.xsd">
+	
+	<bean id="crsService" class="com.baemin.crs.service.impl.CrsServiceImpl" />
+	<bean id="smsSndgService" class="com.baemin.smssndg.service.impl.SmsSndgServiceImpl" />
+	<bean id="mngrService" class="com.baemin.mngr.service.impl.MngrServiceImpl" />
+
+	<bean id="usrCrsLrgNtfTrigger" 
+		class="org.springframework.scheduling.quartz.CronTriggerFactoryBean"
+		p:jobDetail-ref="usrCrsLrgNtfDetail"
+		p:cronExpression="0 42 15 1/1 * ? *" /> <!-- 매일 오전 17시   -->
+	 
+	<bean id="usrCrsLrgNtfDetail" 
+		class="org.springframework.scheduling.quartz.JobDetailFactoryBean"
+		p:jobClass="com.baemin.schedule.UsrCrsLrgNtfJob">
+		<property name="jobDataAsMap">
+			<map>
+				<entry key="crsService" value-ref="crsService" />
+				<entry key="smsSndgService" value-ref="smsSndgService" />
+			</map>
+		</property>
+		<property name="durability" value="true">
+		</property>
+	</bean>
+	
+	<bean id="mngrBatchTrigger" 
+		class="org.springframework.scheduling.quartz.CronTriggerFactoryBean"
+		p:jobDetail-ref="mngrBatchDetail"
+		p:cronExpression="0 0 1 1/1 * ? *" /> <!-- 매일 오전 1시   -->
+	 
+	<bean id="mngrBatchDetail" 
+		class="org.springframework.scheduling.quartz.JobDetailFactoryBean"
+		p:jobClass="com.baemin.schedule.MngrBatchJob">
+		<property name="jobDataAsMap">
+			<map>
+				<entry key="mngrService" value-ref="mngrService" />
+			</map>
+		</property>
+		<property name="durability" value="true">
+		</property>
+	</bean>
+	
+	<bean id="schedulerFactoryBean"
+		class="org.springframework.scheduling.quartz.SchedulerFactoryBean">
+		<property name="triggers">
+			<list>
+				 <ref bean="usrCrsLrgNtfTrigger" />
+				<!--<ref bean="mngrBatchTrigger" />-->
+			</list>
+		</property>	
+	</bean>
+</beans>
+
+-> 돌아감!
+-> 단지 id를 등록해줬을 뿐인데 이게 왜 되지 (참고 사이트에서도 id를 등록하면 됩니다. 정도만 있지 자세한 설명은 없음)
+-> 참고 : https://blog.csdn.net/jianbo2233/article/details/84939742
