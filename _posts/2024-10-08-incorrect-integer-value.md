@@ -67,7 +67,7 @@ select @@global.sql_mode;
 set @@global.sql_mode = 'ONLY_FULL_GROUP_BY,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION';
 ```
 
-위 명령어를 사용하여 STRICT_TRANS_TABLES을 제외한 옵션을 재정용한다.
+위 명령어를 사용하여 STRICT_TRANS_TABLES을 제외한 옵션을 재적용한다.
 
 
 ### 2. 타입 변경하기
