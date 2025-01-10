@@ -281,6 +281,30 @@ _sass/addon/commons.scss를 수정하면 사이드바를 설정할 수 있다. c
 
 post의 카테고리나 태그에 null or 0이 있을 경우 발생한다. 이와 같은 값을 넣기 위해서는 ' ' or " "로 문자열 표시를 해주어야 한다.
 
+## 3. The current runner (ubuntu-24.04-x64) was detected as self-hosted because the platform does not match a GitHub-hosted runner image (or that image is deprecated and no longer supported).
+
+위와 같은 build 오류가 발생해서 [이슈](https://github.com/ruby/setup-ruby/issues/595#issuecomment-2396187213)에 따라 jekyll.yml을 확인했다.
+
+```yml
+build:
+      ...
+      - name: Setup Ruby
+        uses: ruby/setup-ruby@8575951200e472d5f2d95c625da0c7bec8217c42 # v1.161.0
+```
+
+ruby/setup-ruby@8575951200e472d5f2d95c625da0c7bec8217c42으로 되어 있어서서 uses를 공식 권장 사항인 v1로 아래와 같이 수정했다.
+
+```yml
+build:
+    ...
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Setup Ruby
+        uses: ruby/setup-ruby@v1 # v1.161.0
+```
+
+다시 업데이트하니 문제 없이 동작했다.
+
 ---
 
 # 참고
