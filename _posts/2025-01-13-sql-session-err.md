@@ -34,7 +34,7 @@ tags: [study, server, apache, tomcat, mybatis, MyBatis, code, error]
 
 ### parameterType의 문제
 
-오류를 반환했던던 sql.xml은 아래와 같았다.
+오류를 반환했던 sql.xml은 아래와 같았다.
 
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
