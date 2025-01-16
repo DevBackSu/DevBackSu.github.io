@@ -285,4 +285,24 @@ https://community.frame.work/t/tracking-kworker-stuck-at-near-100-cpu-usage-with
 
 -> 돌아감!
 -> 단지 id를 등록해줬을 뿐인데 이게 왜 되지 (참고 사이트에서도 id를 등록하면 됩니다. 정도만 있지 자세한 설명은 없음)
--> 참고 : https://blog.csdn.net/jianbo2233/article/details/84939742
+-> 참고 : https://blog.csdn.net/jianbo2233/article/details/84939742\
+
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------
+
+sql - insert에 case 사용
+
+A라는 테이블이 있다고 가정하자. 이 테이블에는 id (PK), name, time, pos가 있어.
+
+그리고 특정 버튼을 누르면 아래의 sql이 실행돼.
+
+update test_table set pos = case
+								when ifnull(time, 0) = 0 then 0
+								when ifnull(pos, 0) > ifnull(time, 0) then pos
+								when ifnull(time,0) > ifnull(pos, 0) then time
+                            end
+where id = 1;
+
+만약 pos와 time이 둘 다 100으로 같다면 pos에는 어떤 값이 들어갈까?
+
+-> 세 가지 조건이 모두 해당되지 않기 때문에, CASE 문은 NULL을 반환 -> 따라서 pos에는 null이 할당됨
