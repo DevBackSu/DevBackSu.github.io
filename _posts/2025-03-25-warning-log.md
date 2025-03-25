@@ -123,8 +123,8 @@ server.xml에서 IP를 차단하거나, Tomcat의 매니저 애플리케이션 �
 필자의 사내 톰캣에는 이미 설정되어 있어서 직접 시도해보지 않았다. <br/>
 자세한 사항은 [H'academy - Tomcat Manager 설정](https://docs.sysout.co.kr/web/back-end/apache-tomcat/tomcat-manager-extrenal-access)에서 확인할 수 있다.
 
-
-
-
+<br/>
+---
+<br/>
 
 [^foot]: server.xml에 등록한 각 Context를 말한다.
