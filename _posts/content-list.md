@@ -15,45 +15,8 @@ dev/tcp/[IP]/[PORT] - [설명](http://devmes.com/dev-tcp-seolmyeong-mic-sayongba
 
 각 예시 추가하기
 
-----
-
-2. 주석 관련
-ibatis (mybatis) -> xml에 쿼리 적을 때 insert into 부분은 -- 써도 상관 없는데 값을 입력 받는 부분 #{ } (동적쿼리) 여기 앞에 -- 붙이면 오류 남
-<!-- -->를 쓰는 것이 좋다.
-아니면 의도하지 않은 문제가 발생할 수 있음
-
-예를 들어, 아래는 회원 가입에 관한 내용임.
-
-이거는 전부 -- 처리한 것. 값을 받지 않는 email과 friend_id도 값을 받으려고 함. 근데 주는 게 없으니까 ?로 뜸
-t_usr ( usr_nm ,telno -- ,email -- ,friend_id ,cpl_yn ,send_yn ,del_yn ,rgr_dtm ) VALUES ( ? ,aes_enc(?) -- ,aes_enc(?) -- ,? ,'N' ,'N' ,'N' ,sysdate() ) 
-
-
--> 내 경우에는 정확인 어떤 Exception임 하고 뜨진 않았는데 sqlSessionUtils가 트랜젝션 sql session을 release하고 transaction 동기화를 등록 해제해버림
-
-오류(?)문
-15:38:05.914 [http-nio-80-exec-9] DEBUG org.mybatis.spring.SqlSessionUtils - Releasing transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@4c6a4faa]
-15:38:05.914 [http-nio-80-exec-9] DEBUG org.mybatis.spring.SqlSessionUtils - Transaction synchronization deregistering SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@4c6a4faa]
-15:38:05.914 [http-nio-80-exec-9] DEBUG org.mybatis.spring.SqlSessionUtils - Transaction synchronization closing SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@4c6a4faa]
-15:38:05.934 [http-nio-80-exec-9] DEBUG org.springframework.jdbc.datasource.DataSourceUtils - Returning JDBC Connection to DataSource
-15:38:05.934 [http-nio-80-exec-9] INFO  jdbc.connection - 10. Connection closed  
-
--> 그리고 catch의 내용이 반환됨. 오류이긴 한 듯.
-
-
-
-이거는 into 안은 -- 쓰고 values 안에는 <!-- -->로 처리함
-t_usr ( usr_nm ,telno ,cpl_yn ,send_yn ,del_yn ,rgr_dtm ) VALUES ( ? ,aes_enc(?) ,'N' ,'N' ,'N' ,sysdate() ) 
-
--> 오류 없이 동작함
-
-참고
-https://ddururiiiiiii.tistory.com/382
-https://velog.io/@jonghne/Mybatis-%EC%A3%BC%EC%84%9D%EC%9C%BC%EB%A1%9C-%EC%9D%B8%ED%95%9C-%ED%8C%8C%EB%9D%BC%EB%AF%B8%ED%84%B0-%EC%84%B8%ED%8C%85-%EC%98%A4%EB%A5%98
-
-
-
 ----------------
-3. httpd.service
+1. httpd.service
 
 회사 서비스 중에 하나의 아파치 위에서 여러 개의 톰캣을 돌리는 경우가 있음.
 갑자기 하나의 톰캣이 503 뜨면서 connection time out이 발생함.
@@ -65,6 +28,9 @@ https://velog.io/@jonghne/Mybatis-%EC%A3%BC%EC%84%9D%EC%9C%BC%EB%A1%9C-%EC%9D%B8
 근데 아파치 재시작하는 명령어가 httpd.service인거임. 톰캣은 ./shutdown 이랑 ./startup으로 종료/시작을 하는데 왜 아파치는 httpd.service일까? 가 궁금해짐.
 
 httpd : 아파치 하이퍼텍스트 전송 프로토콜 (HTTP) 서버 프로그램
+
+아파치 -> 웹 서버 (html 등 정적 소스 처리) -> httpd 제공
+톰캣 -> 웹 애플리케이션 서버 (java 등 동적 소스 처리)
 
 
 참고
@@ -98,7 +64,7 @@ https://community.frame.work/t/tracking-kworker-stuck-at-near-100-cpu-usage-with
 --------
 스케쥴러
 
-1. 최초 코드드
+1. 최초 코드
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 		xmlns:p="http://www.springframework.org/schema/p" xmlns:context="http://www.springframework.org/schema/context"

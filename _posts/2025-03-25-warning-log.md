@@ -93,6 +93,9 @@ Tomcat 배포 버전에 따라 활성화 여부가 다르다.
 자세한 사항은 [sarc.io](https://sarc.io/index.php/tomcat/900-apache-tomcat-java-logging-juli)에서 확인할 수 있다.
 
 
+<br/>
+
+# Log
 
 ## org.apache.catalina.realm.LockOutRealm.filterLokedAccounts An attempt was made to authenticate the locked user "tomcat (or admin or root ...)"
 
