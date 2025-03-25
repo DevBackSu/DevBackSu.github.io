@@ -1,5 +1,5 @@
 ---
-title: WARNING LOG
+title: Tomcat Log
 categories: [Study,Tomcat]
 tags: [log,tomcat,warning]
 description: >-
