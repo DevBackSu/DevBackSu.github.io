@@ -96,6 +96,6 @@ iBatis (MyBatis)를 사용해 xml에 쿼리를 작성할 때, insert into 부분
 <br/>
 
 [뚜루리 님 - Mybatis SQL 주석 사용 시 주의할점 (/**/, -- 등)](https://ddururiiiiiii.tistory.com/382)<br/>
-[kyle 님 - 주석으로 인한 파라](https://velog.io/@jonghne/Mybatis-%EC%A3%BC%EC%84%9D%EC%9C%BC%EB%A1%9C-%EC%9D%B8%ED%95%9C-%ED%8C%8C%EB%9D%BC%EB%AF%B8%ED%84%B0-%EC%84%B8%ED%8C%85-%EC%98%A4%EB%A5%98)
+[kyle 님 - 주석으로 인한 파라미터 세팅 오류](https://velog.io/@jonghne/Mybatis-%EC%A3%BC%EC%84%9D%EC%9C%BC%EB%A1%9C-%EC%9D%B8%ED%95%9C-%ED%8C%8C%EB%9D%BC%EB%AF%B8%ED%84%B0-%EC%84%B8%ED%8C%85-%EC%98%A4%EB%A5%98)
 
 
