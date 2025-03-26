@@ -62,7 +62,7 @@ https://community.frame.work/t/tracking-kworker-stuck-at-near-100-cpu-usage-with
 
 
 --------
-5. 스케쥴러
+4. 스케쥴러
 
 1. 최초 코드
 <?xml version="1.0" encoding="UTF-8"?>
@@ -255,3 +255,9 @@ https://community.frame.work/t/tracking-kworker-stuck-at-near-100-cpu-usage-with
 
 
 ----------------------------------------------------------------------------------------------------------------------------------------------------------
+
+5. ibatise 와 mybatis 차이
+
+ibatis : 자바 기반 ORM 프레임워크로 xml 기반의 설정 파일과 sql 매핑을 통해 DB와의 상호작용을 단순하게 처리할 수 있도록 제공함
+
+mybatis : ibatis의 후속 버전으로 2010년에 이름이 변경됨. ORM 프레임워크이며 ibatis의 코드를 베이스로 하면서 개선과 확장이 이뤄짐. xml 기반의 설정 파일을 계승했고 xml 네임 스페이스와 어노테이션을 활용해 보다 간결하고 유연한 설정 방식을 제공함. ibatis보다 xml 구성이 간결하고 유연하며 자동 매핑 기능을 지원하여 보다 편리한 객체-DB 매핑을 제공함. mybatis는 <if> <choose> <when> <otherwise> 등의 동적 sql 태그를 활용해 동적 sql 작성을 간편하게 함. 또한, sqlSession 인터페이스를 사용해 DB 세션을 관리함. sqlsession은 매핑된 sql 문을 실행하고 커밋 / 롤백을 수행하는데 사용됨

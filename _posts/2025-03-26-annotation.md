@@ -84,10 +84,17 @@ test (user_name, user_phone, user_email) VALUES ('a', '010-1234-5678', 'test@gma
 iBatis (MyBatis)를 사용해 xml에 쿼리를 작성할 때, insert into 부분은 -- 을 사용하여 주석 처리를 해도 문제가 발생하지 않지만 동적쿼리 #{ } 부분을 -- 으로 주석 처리하면 오류가 발생한다.<br/>
 따라서 `<!-- -->`을 사용하여 주석 처리 해야 의도하지 않은 문제가 발생하지 않을 수 있다.
 
+
 ---
 
 
 ## 참고
+
+> MyBatis는 자바 기반의 ORM 프레임워크로 iBatis의 후속 버전이다. MyBatis는 xml 기반의 설정 파일과 sql 매핑을 지원하는 iBatis의 코드를 베이스로 하면서 개선과 확장이 이뤄졌다. 우선 xml 기반의 설정 파일을 계승했고, xml 네임 스페이스와 어노테이션을 활용해 보다 간결하고 유연한 설정 방식을 제공한다. MyBatis는 iBatis보다 xml 구성이 간결하고 유연하며, 자동 매핑 기능을 지원해 보다 편리하게 객체 - DB 매핑을 제공한다. 또한, <if>, <choose>, <when>, <otherwise> 등의 동적 sql 태그를 활용해 동적 sql 작성을 간편하게 한다. MyBatis는 sqlSession 인터페이스를 사용해 DB 세션을 관리하는데, sqlSession은 매핑된 sql문을 실행하고 커밋, 콜백을 수행하는데 사용된다.
+{: .prompt-info }
+
+<br/>
+
 [뚜루리 님 - Mybatis SQL 주석 사용 시 주의할점 (/**/, -- 등)](https://ddururiiiiiii.tistory.com/382)<br/>
 [kyle 님 - 주석으로 인한 파라](https://velog.io/@jonghne/Mybatis-%EC%A3%BC%EC%84%9D%EC%9C%BC%EB%A1%9C-%EC%9D%B8%ED%95%9C-%ED%8C%8C%EB%9D%BC%EB%AF%B8%ED%84%B0-%EC%84%B8%ED%8C%85-%EC%98%A4%EB%A5%98)
 
