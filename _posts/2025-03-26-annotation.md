@@ -37,10 +37,15 @@ values (
     -- , #{userTest}
 )
 ```
+<br/>
 
 ```log
+
 test (user_name, user_phone, user_email --, userTest) VALUES ('a', '010-1234-5678', 'test@gmail.com', ?)
+
 ```
+
+<br/>
 
 -> 주석으로 처리한 userTest가 주석 처리 되지 않고 insert 문에 포함되어 있다. 또한, 전달되지 않은 userTest를 입력한다. 하지만 값이 존재하지 않기 때문에 ?가 입력된다.
 
@@ -62,16 +67,22 @@ values (
 )
 ```
 
+<br/>
+
 ```log
+
 test (user_name, user_phone, user_email) VALUES ('a', '010-1234-5678', 'test@gmail.com')
+
 ```
+
+<br/>
 
 -> 전과 달리 주석 처리한 user_test가 사라지고 userTest 또한 입력하지 않는다.
 
 ## 결과
 
-iBatis (MyBatis)를 사용해 xml에 쿼리를 작성할 때, insert into 부분은 -- 을 사용하여 주석 처리를 해도 문제가 발생하지 않지만 동적쿼리 #{} 부분을 -- 으로 주석 처리하면 오류가 발생한다.<br/>
-따라서 <!-- -->을 사용하여 주석 처리 해야 의도하지 않은 문제가 발생하지 않을 수 있다.
+iBatis (MyBatis)를 사용해 xml에 쿼리를 작성할 때, insert into 부분은 -- 을 사용하여 주석 처리를 해도 문제가 발생하지 않지만 동적쿼리 #{ } 부분을 -- 으로 주석 처리하면 오류가 발생한다.<br/>
+따라서 `<!-- -->`을 사용하여 주석 처리 해야 의도하지 않은 문제가 발생하지 않을 수 있다.
 
 ---
 
