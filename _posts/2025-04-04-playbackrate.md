@@ -1,7 +1,7 @@
 ---
 title: 비디오 속도 변경 및 제한하기
 categories: [Study,WEB]
-tags: [웹, web, WEB, JSP, jsp, html, html, video, playbackRate, Object, defineProperty]
+tags: [웹, WEB, web, JS, js, javascript, JavaScript, html, html, video, playbackRate, Object, defineProperty]
 description: >-
     영상의 배속을 변경하거나 제한하는 방법을 알아본다.
 ---
