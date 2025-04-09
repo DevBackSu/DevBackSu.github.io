@@ -32,6 +32,21 @@ HTMLMediaElement.playbackRate 속성은 미디어가 재생되는 속도를 설�
 비디오는 최대 16배속까지 가능하다.
 
 
+### 확장 프로그램 사용하기
+
+Chrome 브라우저는 다양한 확장 프로그램을 지원하는데, 그중에 영상의 속도를 조절하는 프로그램도 존재한다.<br/>
+현재 필자가 사용하는 것은 [**Video Speed Controller**](https://chromewebstore.google.com/detail/video-speed-controller/nffaoalbilbmmfgbnbgppjihopabppdk?hl=ko&utm_source=ext_sidebar) 다.
+<br/>
+기본 단축키는 아래와 같다. (Settings에서 변경 가능)
+
+|       기능        | 단축키 |
+| :---------------: | :----: |
+|      속도 UP      |   D    |
+|     속도 DOWN     |   S    |
+|    속도 초기화    |   R    |
+| Controller ON/OFF |   V    |
+
+
 ## 영상 속도 제한하기
 
 ```js
@@ -104,6 +119,34 @@ _이미지 내 속성과 메서드 외에도 더 있다. 위 이미지는 HTMLMe
 HTMLMediaElement.prototype에는 브라우저가 미리 정의한 것들이 들어 있다. 즉, `<video>`와 `<audio>`가 공유하는 공통 기능이 들어있기 때문에 `<video>`와 `<audio>`가 자동으로 기능을 사용할 수 있다..<br/>
 ckarhfh HTMLVideoElement.prototype에는 `<video>`에만 있는 기능이 정의되어 있다.
 
+
+## 확장 프로그램을 사용한 영상 배속 제한하기
+
+[Video Speed Controller](#확장-프로그램-사용하기)는 브라우저 레벨에서 `<video>`의 playbackRate를 직접 수정하기 때문에 playbackRate의 setter를 재정의하는 방식으로는 제한할 수 없다.<br/>
+따라서, 내부적으로도 직접 `<video>`에 접근해서 playbackRate를 제한해야 한다.
+
+```js
+const maxValue = 1;
+
+document.addEventListener("DOMContentLoaded", function(){
+    // 영상 속도 제한하기 코드
+    ...
+
+    // 확장 프로그램 영상 배속 제한 코드드
+    const video = document.querySelector('video');
+    if (!video) return;
+    setInterval(() => {
+        if (video.playbackRate > maxValue) {
+            console.log( maxValue + "보다 큰 배속은 허용하지 않습니다.")
+            video.playbackRate = maxValue;
+        }
+    }, 200);
+})
+```
+
+### setInterval(() => {..})
+
+배속을 주기적으로 확인하기 위해 setInterval()을 사용한다. 사용자가 언제 배속을 조절할 지 모르기 때문이다.
 
 ---
 
