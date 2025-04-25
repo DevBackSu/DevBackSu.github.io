@@ -62,3 +62,45 @@ https://community.frame.work/t/tracking-kworker-stuck-at-near-100-cpu-usage-with
 
 
 ----------------------------------------------------------------------------------------------------------
+
+
+4. postMessage 방식
+
+자식창에서 부모 창에 필요한 데이터를 전달 -> 부모 창에서 데이터를 받아 처리하는 방식 (자식 창과 부모 창의 도메인이 다를 때 사용)
+
+son.js
+// 슬라이드 설정
+const mySlider = new Swiper('.slider', {
+    ...
+});
+
+mySlider.on('slideChange', function () {  // 슬라이드 변경 시 아래 함수 실행
+  const nextBtn = document.querySelector('.swiper-button-next');
+  const isDisabled = nextBtn && nextBtn.tabIndex === -1;
+// 마지막 페이지 (이후에 페이지가 없을 때) tabIndex === -1인 것을 파악, 해당 값으로 마지막 페이지인지 확인 (마지막 페이지면 -1을 isDisabled에 담아 반환)
+
+  console.log('[팝업창] 마지막 페이지 이동 여부 : ', isDisabled);
+
+  window.parent.postMessage({ // 자식 창에서 부모 창에 message 보내기
+    type: 'nextButtonStatus', // key (type) : value (nextButtonStatus)
+    disabled: isDisabled      // key (disabled) : value (isDisabled)
+  }, 'https://test.com'); // * -> 모든 도메인에서 허용 (보안 이슈 발생 가능) / 특정 도메인 입력 시 해당 도메인에만 message를 보냄 (아니면 에러 발생)
+});
+
+
+parents.js
+
+...
+
+window.addEventListener('message', function(event) {
+        if (event.origin !== 'https://slider.com') return; // 보안용 (호출 받은 이벤트의 도메인이 slider면 return함)
+        
+        if (event.data.type === 'nextButtonStatus') {
+            console.log('[부모창] 다음 버튼 상태:', event.data.disabled ? '비활성화됨' : '활성화됨');
+        }
+        if (event.data.disabled) {
+            ...
+        }
+    });
+
+....
