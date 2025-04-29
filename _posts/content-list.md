@@ -104,3 +104,18 @@ window.addEventListener('message', function(event) {
     });
 
 ....
+
+--------------------------------------
+
+
+5. spring boot + jpa + pagination
+페이지네이션 (spring boot jpa랑 mybatis 모두 적용 가능)
+데이터를 정렬 기준, 페이지 크기, 몇 번째 페이지인지를 토대로 정보를 전달함
+직접 구현도 가능하고 Spring에서 제공하는 pageable을 사용할 수 있음
+
+Pageable 클래스랑
+Page 클래스가 있음
+
+
+참고 : https://velog.io/@soluinoon/Spring-Pageable-%ED%8C%8C%ED%97%A4%EC%B9%98%EA%B8%B0
+참고 : https://velog.io/@albaneo0724/Spring-Pagination%EA%B3%BC-Page-%EA%B7%B8%EB%A6%AC%EA%B3%A0-Pageable
