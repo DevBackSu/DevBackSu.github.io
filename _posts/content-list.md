@@ -122,3 +122,29 @@ Page 클래스가 있음
 
 커서 기반 페이지네이션 : https://velog.io/@znftm97/%EC%BB%A4%EC%84%9C-%EA%B8%B0%EB%B0%98-%ED%8E%98%EC%9D%B4%EC%A7%80%EB%84%A4%EC%9D%B4%EC%85%98Cursor-based-Pagination%EC%9D%B4%EB%9E%80-Querydsl%EB%A1%9C-%EA%B5%AC%ED%98%84%EA%B9%8C%EC%A7%80-so3v8mi2
 외에는 오프셋 기반 페이지네이션이 있음
+
+
+-------------------------------------
+
+6. MockMvc 테스트 -> 단위 테스트용
+
+묵 테스트를 이용하면 json 형식의 api response를 검증할 수 있음 (컨트롤러 동작 테스트)
+이때 사용하는 게 jsonpath()
+
+perform() : 요청을 전송하는 역할
+andExcpect() : 리턴값 검증 및 확인
+get : HTTP 메소드 결정 (post / put / delete 등). 인자로는 경로를 보냄
+params : 키:값 파라미터를 전달할 수 있음. 여러 개일때는 params() / 하나일 때는 param()
+
+
+참고 : https://0soo.tistory.com/190   /   https://adjh54.tistory.com/347
+
+
+----------------------------------------
+
+
+7. TOOL
+
+Shadcn UI : Vercel의 shadcn이 만든 UI 도구. (https://ui.shadcn.com/)
+
+twine : 웹에서 제공하는 오픈 소스 제작 툴. 간단한 명령어로 하이퍼텍스트 html 파일을 만들 수 있다. => 텍스트 게임을 만들 수 있는 툴이다. (https://twinery.org/)
