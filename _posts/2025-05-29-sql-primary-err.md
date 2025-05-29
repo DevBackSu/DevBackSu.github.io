@@ -18,9 +18,9 @@ com.mysql.jdbc.exceptions.jdbc4.MySQLIntegrityConstraintViolationException: Dupl
 | 2            | 2025-05-02 10:22:44 | B     |
 | 3            | 2025-05-03 08:33:11 | C     |
 
-USER_ID - 복합키이며 사용자의 고유값을 가진다.
-DATE - 복합키이며, 데이터가 생성한 날짜를 가리킨다.
-OTHER - 외의 데이터를 뭉뚱그렸다.
+USER_ID - 복합키이며 사용자의 고유값을 가진다.<br/>
+DATE - 복합키이며, 데이터가 생성한 날짜를 가리킨다.<br/>
+OTHER - 외의 데이터를 뭉뚱그렸다.<br/>
 
 ## 오류 발생 원인
 
