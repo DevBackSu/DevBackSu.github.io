@@ -9,7 +9,6 @@ tags: [study, server, database, db, DB, mysql, connection, exception]
 ```text
 ERROR jdbc.audit - PreparedStatement.execute() SELECT ... FROM ... WHERE ...
 java.sql.SQLNonTransientConnectionException: unexpected end of stream (socket was closed by server)
-
 ```
 
 ## 오류 발생 원인
@@ -45,7 +44,7 @@ java.sql.SQLNonTransientConnectionException: unexpected end of stream (socket wa
 
 ## 해결?
 
-타 서비스는 내 담당이 아니기도 하고, 전체적인 구조도 알아가는 단계이기 때문에 어떻게 해결해야 할 지 감이 오지 않았다. 우선 선배님께서 내가 관리하는 서비스의 DB를 재시작해주셨더니 전보다는 덜 오류가 발생했다.
+타 서비스는 내 담당이 아니기도 하고, 전체적인 구조도 알아가는 단계이기 때문에 어떻게 해결해야 할 지 감이 오지 않았다. 우선 선배님께서 내가 관리하는 서비스의 DB를 재시작해주셨더니 전보다는 오류가 덜 발생했다.
 
 ### 내가 생각한 해결 방법
 
@@ -54,7 +53,7 @@ java.sql.SQLNonTransientConnectionException: unexpected end of stream (socket wa
 가장 생각하기 쉬운 방법으로, 남는 서버가 있다면, 서비스 중 하나를 다른 서버로 옮기면 된다!<br/>
 다만 이 방법은 서버 공간 낭비가 심하고 (내가 관리하는 서비스는 사용자 수가 많지 않기 때문), 번거롭고 (이런저런 설정부터 내부 파일까지 모두 옮겨야 함), 남는 서버가 있어야 한다. (다 돈이다.)
 
-### 2. 로드밸런싱
+#### 2. 로드밸런싱
 
 부하 트래픽을 분산시켜 서버 부하를 방지한다.<br/>
 다만, 이 방법은 서버 사양을 높이거나 추가적인 서버가 필요하기 때문에 당장 적용할 수도 없고 쉽게 결정할 수 있는 부분도 아니었다.

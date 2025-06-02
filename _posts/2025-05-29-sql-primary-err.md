@@ -6,7 +6,7 @@ tags: [study, server, database, db, DB, duplicate, entry, key, unique, primary]
 
 ## 오류 내용
 
-```TEXT
+```text
 com.mysql.jdbc.exceptions.jdbc4.MySQLIntegrityConstraintViolationException: Duplicate entry '...' for key 'PRIMARY'
 ```
 
@@ -59,7 +59,7 @@ OTHER - 외의 데이터를 뭉뚱그렸다.<br/>
 내 경우, 데이터를 INSERT할 때 밀리초까지 입력되도록 수정했다. 사용자가 버튼을 연타하더라도 요청 간에는 밀리초 차이가 생기기 때문에 같은 키가 두 번 생성될 일이 적을 것이라고 판단했기 때문이다.<BR/>
 수정한 쿼리는 아래와 같다.
 
-```SQL
+```sql
 INSERT INTO A_LOG (
 	USER_ID, DATE, OTHER
 ) VALUES (
@@ -69,9 +69,9 @@ INSERT INTO A_LOG (
 )
 ```
 
-단순 로그 테이블이기 때문에 마이크로초까지를 넣을까 고민했지만 단순 로그 테이블이다보니 데이터가 많이 적재될 것 같기도 하고, 자주 발생하는 오류도 아니고, 정밀한 요청 순서를 보장할 필요가 적다고 판단해서 밀리초로 결정했다. 만약 마이크로초를 넣을 거라면 아래와 같이 쿼리를 수정하면 된다.
+마이크로초까지를 넣을까 고민했지만 단순 로그 테이블이다보니 데이터가 많이 적재될 것 같기도 하고, 자주 발생하는 오류도 아니고, 정밀한 요청 순서를 보장할 필요가 적다고 판단해서 밀리초로 결정했다. 만약 마이크로초를 넣을 거라면 아래와 같이 쿼리를 수정하면 된다.
 
-```SQL
+```sql
 INSERT INTO A_LOG (
 	USER_ID, DATE, OTHER
 ) VALUES (
