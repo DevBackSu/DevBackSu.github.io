@@ -118,6 +118,6 @@ twine : 웹에서 제공하는 오픈 소스 제작 툴. 간단한 명령어로 
 
 ------------------------------------------
 
-- vscode 도구
+SQL
 
-dashboard 진짜.. 잘 쓰고 있음. material icon theme랑 prettier랑 indent-rainbow는 뭔가 기본이고 ssh도 쓸만 함. sftp도 나쁘지 않음. markdown all in one은 뭐지. color highlight도 기본 느낌? auto rename tag도 나쁘지 않음.
+EXPLAIN 으로 쿼리 플랜을 확인할 수 있음
