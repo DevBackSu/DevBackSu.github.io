@@ -121,3 +121,31 @@ twine : 웹에서 제공하는 오픈 소스 제작 툴. 간단한 명령어로 
 SQL
 
 EXPLAIN 으로 쿼리 플랜을 확인할 수 있음
+
+
+-----------------------------------------------
+
+SecureRandom() 이란
+
+대문자+소문자+숫자 조합의 랜덤한 문자열 만들기
+
+String characters = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+
+SecureRandom random = new SecureRandom();
+StringBuilder sb = new StringBuilder(20);
+
+for (int i = 0; i < 20; i++) {
+	int index = random.nextInt(characters.length());
+	sb.append(characters.charAt(index));
+}
+
+compVo.setSsoKey(String.valueOf(sb));
+
+
+----------------------------------------------------
+
+호스트 설정하기
+
+-------------------------------------------------------
+
+select 1
