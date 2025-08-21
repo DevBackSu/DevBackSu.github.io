@@ -148,4 +148,3 @@ compVo.setSsoKey(String.valueOf(sb));
 
 -------------------------------------------------------
 
-select 1
