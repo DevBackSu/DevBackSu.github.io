@@ -63,7 +63,11 @@ java.rmi.server.ExportException: Listen failed on port: (포트번호); nested e
 2. listen failed와 동일하게 중지 -> 재빌드 하면 정상적으로 실행되는 경우가 있었다. -> 중지하고 좀 기다렸다가 다시 시작하니 또 된다. 중지하는데 시간이 오래 걸리는 것 같다.
 
 
-## Application Server was not connected before run configuration stop, reason: java. io. IOException: Failed to retrieve RMIServer stub: javax. naming. ServiceUnavailableException [Root exception is java. rmi. ConnectException: Connection refused to host: localhost; nested exception is: java. net. ConnectException: Connection refused: connect]
+## 또 오류
+
+```text
+Application Server was not connected before run configuration stop, reason: java. io. IOException: Failed to retrieve RMIServer stub: javax. naming. ServiceUnavailableException [Root exception is java. rmi. ConnectException: Connection refused to host: localhost; nested exception is: java. net. ConnectException: Connection refused: connect]
+```
 
 이건 인텔리제이에서 애플리케이션 실행 시 Tomcat에 Java Management Extensions (JME) 연결을 시도하다가 실패했음을 알리는 에러 메세지이다.<br/>
 서버 실행 자체의 실패보다는 인텔리제이가 JMX 연결을 시도하는데 실패했을 때 발생하는 오류라서 웹 앱은 잘 실행되고 있을 수도 있다고 한다.
