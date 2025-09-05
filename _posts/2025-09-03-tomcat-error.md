@@ -61,3 +61,27 @@ java.rmi.server.ExportException: Listen failed on port: (포트번호); nested e
 
 1. 이미 사용 중인 포트이기 때문일 수 있으니 빌드 설정을 변경하려고 했다. 하지만 어디에도 오류가 발생한 포트를 사용하는 부분은 없었다. 다 기본 설정인데 왜 문제가 발생하는건지 모르겠다.
 2. listen failed와 동일하게 중지 -> 재빌드 하면 정상적으로 실행되는 경우가 있었다. -> 중지하고 좀 기다렸다가 다시 시작하니 또 된다. 중지하는데 시간이 오래 걸리는 것 같다.
+
+
+## Application Server was not connected before run configuration stop, reason: java. io. IOException: Failed to retrieve RMIServer stub: javax. naming. ServiceUnavailableException [Root exception is java. rmi. ConnectException: Connection refused to host: localhost; nested exception is: java. net. ConnectException: Connection refused: connect]
+
+이건 인텔리제이에서 애플리케이션 실행 시 Tomcat에 Java Management Extensions (JME) 연결을 시도하다가 실패했음을 알리는 에러 메세지이다.<br/>
+서버 실행 자체의 실패보다는 인텔리제이가 JMX 연결을 시도하는데 실패했을 때 발생하는 오류라서 웹 앱은 잘 실행되고 있을 수도 있다고 한다.
+
+### 원인
+
+1. 톰캣이 아직 시작되지 않았거나 충돌했을 경우
+   -  포트 충돌이나 인텔리제이의 JMX 연결 실패 시 발생한다.
+   -  인텔리제이의 실행 콘솔을 확인해서 톰캣이 실제로 동작하는지 로그를 확인하고, 이미 떠 있는 톰캣 인스턴스를 종료한 뒤 다시 실행하면 된다고 한다.
+   -  내 경우에는 실행조차 되지 않았기 때문에 이 방법으로는 해결할 수 없었다.
+2. JMX 포트가 닫혀있거나 충돌했을 경우
+   - JMX 포트가 방화벽, 보안 정책, 다른 프로세스에 의해 막혀있을 수 있다.
+   - 이때는 포트를 명시적으로 고정시키고 방화벽을 여는 것이 좋다.
+   - 내 경우에는 이미 고정값이기 때문에 이 방법으로는 해결할 수 없었다.
+3. 인텔리제이 Application Server 설정 문제
+   - JMX 연결 세팅 오류 등의 설정 문제일 가능성도 있다.
+   - 이때는 톰캣의 설정을 확인해서 JMX port 관련 옵션을 비활성화 하거나 `Before launch: Connect to Application Server` 항목을 제거하는 방식으로 해결할 수 있다고 한다.
+   - 아니면 애플리케이션 설정의 Tomcat Home이나 Tomcat Base Directory 끝에 \ 이나 /가 있는지 확인해보자. 디렉터리 경로 문제일 수도 있다.
+4. 기존 서버 인스턴스의 충돌
+   - 이전에 실행되었던 인스턴스가 남아 있어서 연결이 꼬인 경우에 발생한다.
+   - 작업 관리자에서 java.exe, javaw.exe, tomcat 관련 프로세스와 인텔리제이를 완전 종료한 뒤 재실행하는 방식으로 해결할 수 있다.
