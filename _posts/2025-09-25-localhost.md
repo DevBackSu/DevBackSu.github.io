@@ -16,7 +16,7 @@ description: >-
 ## 2. JMX 커넥터 서버 통신 오류
 
 ```log
-오류: JMX 커넥터 서버 통신 오류: service:jmx:rmi://DESKTOP-UD456JE
+오류: JMX 커넥터 서버 통신 오류: service:jmx:rmi://(pc name)
 sun.management.AgentConfigurationError: java.rmi.server.ExportException: Listen failed on port: 0; nested exception is: 
 	java.net.SocketException: Bad address: listen failed
 Caused by: java.rmi.server.ExportException: Listen failed on port: 1099; nested exception is: 
