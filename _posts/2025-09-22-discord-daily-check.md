@@ -51,6 +51,7 @@ description: >-
 - **Presence Intent** : 사용자의 상태 변화 (온라인 / 오프라인 등)을 봇이 감지할 수 있도록 권한을 부여한다.
 - **Server Members Intent** : 봇이 서버 멤버에 대한 정보 (ef.멤버가 서버에 들어옴 / 멤버가 서버에서 나감 / 업데이트 된 멤버의 정보 등)에 접근할 수 있도록 허용한다.
 - **Message Content Intent** : 봇이 메세지 내용을 읽을 수 있도록 허용한다.
+
 변경 후 **Save Changes** 버튼을 눌러 내용을 저장한다. 이렇게 봇 설정이 끝났다. 이 봇을 내 서버에 초대하려면 초대 링크를 생성해야 한다. 초대 링크는 OAuth2 탭에서 생성할 수 있다.
 
 ### 4. 초대 링크 생성하기
@@ -258,6 +259,5 @@ client.on('messageCreate', (message) => {
 client.login(token);
 
 ```
-
 </div>
-<details>
+</details>
