@@ -46,8 +46,7 @@ description: >-
 
 ![Bot](/assets/img/post_img/discord/bot.png)
 
-그리고 봇을 초대하려면 초대 링크를 생성해야 함. 이 링크는 OAuth2 탭에서 생성 가능함.
-봇 설정 하단의 **Privileged Gateway Intents** 항목은 3개 모두 활성화해야 한다.
+봇 설정 하단의 **Privileged Gateway Intents** 항목은 3개 모두 활성화해야 한다. 활성화해야 사용할 수 있는 인텐트가 존재하기 때문이다.
 - **Presence Intent** : 사용자의 상태 변화 (온라인 / 오프라인 등)을 봇이 감지할 수 있도록 권한을 부여한다.
 - **Server Members Intent** : 봇이 서버 멤버에 대한 정보 (ef.멤버가 서버에 들어옴 / 멤버가 서버에서 나감 / 업데이트 된 멤버의 정보 등)에 접근할 수 있도록 허용한다.
 - **Message Content Intent** : 봇이 메세지 내용을 읽을 수 있도록 허용한다.
@@ -69,6 +68,11 @@ BOT PERMISSIONS에서는 봇의 권한을 설정한다. 내가 만든 봇은 개
 권한 설정 후 아래로 내려가면 초대 url을 확인할 수 있다. 참고로 Integration Type에는 다음 두 가지가 있으며 나는 Guild Install을 선택했다.
 - Guild Install : 특정 서버에 애플리케이션을 설치한다.
 - User Install : 애플리케이션을 자신의 계정에 개별적으로 설치한다.
+복사한 URL을 브라우저 주소창이나 채팅창에 붙여 넣고 해당 링크로 접속하면 앱의 계정 접근을 승인할거냐는 알림창이 뜬다. 승인을 누르면 생성한 bot과 서버의 연결이 완료된다.
+
+![실행](/assets/img/post_img/discord/ee.png)
+
+초대된 봇은 코드 실행 시 온라인 상태가 된다. 코드 실행을 종료하면 봇은 오프라인 상태로 전환된다.
 
 ## 개발
 디스코드는 다양한 언어로 봇을 만들 수 있는데, 이는 공식적으로 제공되는 것이 아닌 사용자들이 만든 API로 만든다. 현재 제공되는 API는 파이썬 / Node.js / JAVA / C# / Go / C++ 이 있다. 나는 서버 개발 시 사용해 본 경험이 있는 Node.js를 사용해 봇을 만들기로 결정했다.
@@ -102,21 +106,17 @@ const { Client, Events, GatewayIntentBits } = require('discord.js');
 const { token } = require('./config.json');
 
 const client = new Client({ intents: [
-    GatewayIntentBits.Guilds,        // 봇이 서버에 연결할 수 있게 함
-    GatewayIntentBits.GuildMessages, // 봇이 채팅방의 메세지를 받을 수 있게 함
-    GatewayIntentBits.MessageContent,// 봇이 메세지의 내용까지 읽을 수 있게 함
+    GatewayIntentBits.Guilds,
+    GatewayIntentBits.GuildMessages,
+    GatewayIntentBits.MessageContent,
 ] });
 
-// 봇이 켜졌을 때 로그 출력
 client.once(Events.ClientReady, readyClient => {
     console.log(`Ready! Logged in as ${readyClient.user.tag}`);
 });
 
-// 메모리 기반 일정 저장소 - 일정 목록 저장
 let scheduleList = [];
-// 사용자별 등록 진행 중인 일정 저장
 const pendingSchedules = new Map();
-// 일정 수정 중인 사용자 관리 (날짜 포함 여부 처리)
 const pendingEdits = new Map();
 
 client.on('messageCreate', (message) => {
@@ -261,3 +261,49 @@ client.login(token);
 ```
 </div>
 </details>
+
+
+
+```js
+const { Client, Events, GatewayIntentBits } = require('discord.js');
+const { token } = require('./config.json');
+
+const client = new Client({ intents: [
+    GatewayIntentBits.Guilds,        // 봇이 서버에 연결할 수 있게 함
+    GatewayIntentBits.GuildMessages, // 봇이 채팅방의 메세지를 받을 수 있게 함
+    GatewayIntentBits.MessageContent,// 봇이 메세지의 내용까지 읽을 수 있게 함
+] });
+```
+
+먼저, require로 필요한 모듈을 호출한다. discord.js는 디스코드 API를 사용하기 위해 호출하며, config.json은 봇 인증 시 필요한 토큰을 불러오기 위해 호출한다.<br/>
+GatewayIntentBits는 봇이 discord 서버에서 어떤 이벤트를 받을지 설정하는 기능이다.<br/>
+- GatewayIntentBits.Guilds : 기본적인 서버 관련 이벤트를 받을 수 있게 해주는 인텐트
+- GatewayIntentBits.GuildMessages : 서버 내에서 발생하는 메세지 이벤트를 받을 수 있게 해주는 인텐트
+- GatewayIntentBits.MessageContent : 메시지의 content, attachments, embeds, components 같은 필드를 실제로 받기 위해 필요한 인텐트
+- GatewayIntentBits.GuildMembers : 서버에 새 멤버가 들어왔는지, 나갔는지, 정보가 변경되었는지 등의 이벤트를 받기 위해 필요한 인텐트
+이중 privileged intent인 GuildMembers는 Privileged Gateway Intents를 활성화해야 한다. (이에 대한 설명은 [Bot 설정하기](#3-bot-설정하기)에 작성해두었다.)
+
+```js
+// 봇이 켜졌을 때 로그 출력
+client.once(Events.ClientReady, readyClient => {
+    console.log(`Ready! Logged in as ${readyClient.user.tag}`);
+});
+```
+
+봇이 켜졌는지 확인하기 위한 로그다.<br/>
+once()는 특정 이벤트가 발생했을 때 단 한 번 실행되도록 설정하는 이벤트 리스너다. onec는 두 개의 인자를 받는데, 각각 '이벤트 이름'과 '콜백 함수'를 받는다.<br/>
+Events.ClientReady는 봇이 준비되었음을 나타내며 'ready'로 대체 가능하다. readyClient는 봇 개체 자체를 나타낸다.
+
+```js
+// 메모리 기반 일정 저장소 - 일정 목록 저장
+let scheduleList = [];
+// 사용자별 등록 진행 중인 일정 저장
+const pendingSchedules = new Map();
+// 일정 수정 중인 사용자 관리 (날짜 포함 여부 처리)
+const pendingEdits = new Map();
+```
+
+
+## 참고
+
+[디스코드 명령어 완벽 가이드: 기본 사용법부터 봇 명령어까지](https://notavoid.tistory.com/436)
