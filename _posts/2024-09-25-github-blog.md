@@ -336,7 +336,7 @@ gem "github-pages", group: :jekyll_plugins
 gem "wdm", "~> 0.1.1", :platforms => [:mingw, :x64_mingw, :mswin]
 ```
 
-이후 다시 install을 하고 생성된 Gemfile.lock을 커밋했다. 이렇게 하니까 4번 오류는 안 뜨더라. 그래서 jekyll.yml의 명시된 버전인 3.1.4로 다시 설치했다.
+이후 다시 install을 하고 생성된 Gemfile.lock을 커밋했다. 이렇게 하니까 4번 오류는 안 뜨더라. 그래서 jekyll.yml의 명시된 버전인 3.1.4로 다시 설치 후 세팅을 진행했다.
 
 
 ---

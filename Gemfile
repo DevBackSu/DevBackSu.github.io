@@ -5,7 +5,7 @@ source "https://rubygems.org"
 gemspec
 
 # gem "github-pages", group: :jekyll_plugins
-gem "sass-embedded", "~> 1.98.0"
+# gem "sass-embedded", "~> 1.98.0"
 
 gem "html-proofer", "~> 5.0", group: :test
 
