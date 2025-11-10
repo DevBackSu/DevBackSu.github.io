@@ -67,9 +67,6 @@ chcp 65001
 > chcp 는 인코딩 방식을 변경하는 명령어다. cmd에서 기본적으로 사용하는 인코딩 방식은 cp949로 EUC-KR 확장 버전이며, 위 명령어로 설정한 ch65001은 UTF-8이다. 인코딩 방식을 변경하는 이유는 해당 테마가 UTF-8 형식을 사용하고 있기 때문이며, 만약 설정하지 않았다면 사이트 생성 단계에서 **Liquid Exception: Incompatible character encoding**가 발생할 수 있다.
 {: .prompt-tip }
 
-> 당연한 말이지만 Ruby를 삭제하면 `The process '/opt/hostedtoolcache/Ruby/3.1.7/x64/bin/bundle' failed with exit code 5`가 발생할 수 있다. 필자는 이미 한 번 push했으니까 괜찮지 않을까? 하고 Ruby를 삭제했다가 위 오류 때문에 루비를 다시 세팅해야 했다. (와중에 버전이 달라서 또 오류가 터졌고, jekill의 버전으로 세 번째 설치하고 난 뒤에야 오류가 사라졌다.)
-{: .prompt-warning }
-
 ## 4. bundle 실행
 
 commend로 저장소 디렉터리 위치로 이동한 후 아래 명령어를 실행한다.
@@ -307,6 +304,40 @@ build:
 ```
 
 다시 업데이트하니 문제 없이 동작했다.
+
+## 4. The process '/opt/hostedtoolcache/Ruby/3.1.7/x64/bin/bundle' failed with exit code 5
+
+(25.11.10) 간만에 push하니까 위 오류가 발생했다. 혹시 버전 오류인가 싶어서 jekyll에 명시된 버전으로 재설치를 진행했으나 여전히 동일한 오류가 발생했다. 그래서 이곳저곳 찾아보았는데, 위 오류는 bundler 캐시가 꼬였을 때 발생하기도 한다고 하더라.
+
+```bash
+bundle config --delete without
+bundle config --delete path
+bundle install
+```
+
+위 명령어를 차례로 실행한 후 Gemfile을 아래와 같이 수정했다. 특히 wdm은 윈도우용 gem이라서 github pages의 빌드 환경인 linux에서는 설치에 실패할 수 있고, 다른 버전에서는 wdm을 지원하지 않는 경우도 있다고 했다. 아래의 gem "wdm"은 윈도우 환경에서만 wdm을 사용하도록 명시한 것이다. 그리고 github pages가 사용하는 github-pages gem은 내부적으로 루비 버전이 고정되어 있어서 명시적으로 추가해두었다. 나머지 jekyll 관련 gem은 github pages가 알아서 맞는 버전으로 설치할 수 있게 제거했다.
+
+```Gemfile
+# frozen_string_literal: true
+
+source "https://rubygems.org"
+
+# gemspec
+
+# gem "html-proofer", "~> 5.0", group: :test
+
+# platforms :mingw, :x64_mingw, :mswin, :jruby do
+#   gem "tzinfo", ">= 1", "< 3"
+#   gem "tzinfo-data"
+# end
+
+gem "github-pages", group: :jekyll_plugins
+
+gem "wdm", "~> 0.1.1", :platforms => [:mingw, :x64_mingw, :mswin]
+```
+
+이후 다시 install을 하고 생성된 Gemfile.lock을 커밋했다.
+
 
 ---
 
