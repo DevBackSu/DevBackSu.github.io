@@ -67,6 +67,9 @@ chcp 65001
 > chcp 는 인코딩 방식을 변경하는 명령어다. cmd에서 기본적으로 사용하는 인코딩 방식은 cp949로 EUC-KR 확장 버전이며, 위 명령어로 설정한 ch65001은 UTF-8이다. 인코딩 방식을 변경하는 이유는 해당 테마가 UTF-8 형식을 사용하고 있기 때문이며, 만약 설정하지 않았다면 사이트 생성 단계에서 **Liquid Exception: Incompatible character encoding**가 발생할 수 있다.
 {: .prompt-tip }
 
+> 당연한 말이지만 Ruby를 삭제하면 `The process '/opt/hostedtoolcache/Ruby/3.1.7/x64/bin/bundle' failed with exit code 5`가 발생할 수 있다. 필자는 이미 한 번 push했으니까 괜찮지 않을까? 하고 Ruby를 삭제했다가 위 오류 때문에 루비를 다시 세팅해야 했다. (와중에 버전이 달라서 또 오류가 터졌고, jekill의 버전으로 세 번째 설치하고 난 뒤에야 오류가 사라졌다.)
+{: .prompt-warning }
+
 ## 4. bundle 실행
 
 commend로 저장소 디렉터리 위치로 이동한 후 아래 명령어를 실행한다.
