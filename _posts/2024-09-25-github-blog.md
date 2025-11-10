@@ -315,28 +315,31 @@ bundle config --delete path
 bundle install
 ```
 
-위 명령어를 차례로 실행한 후 Gemfile을 아래와 같이 수정했다. 특히 wdm은 윈도우용 gem이라서 github pages의 빌드 환경인 linux에서는 설치에 실패할 수 있고, 다른 버전에서는 wdm을 지원하지 않는 경우도 있다고 했다. 아래의 gem "wdm"은 윈도우 환경에서만 wdm을 사용하도록 명시한 것이다. 그리고 github pages가 사용하는 github-pages gem은 내부적으로 루비 버전이 고정되어 있어서 명시적으로 추가해두었다. 나머지 jekyll 관련 gem은 github pages가 알아서 맞는 버전으로 설치할 수 있게 제거했다.
+위 명령어를 차례로 실행한 후 Gemfile을 아래와 같이 수정했다. 특히 wdm은 윈도우용 gem이라서 github pages의 빌드 환경인 linux에서는 설치에 실패할 수 있고, 다른 버전에서는 wdm을 지원하지 않는 경우도 있다고 했다. 아래의 gem "wdm"은 윈도우 환경에서만 wdm을 사용하도록 명시한 것이다.<br/>
+추가로, 업데이트한 루비 버전은 3.4.7인데, 이 버전에서는 wdm이 0.1.1 빌드가 깨질 수 있다. 그래서 wdm도 최신으로 업그레이드하기 위해 아래와 같이 gemfile을 수정했다.<br/>
+tzinfo 부분은 시간을 설정하는 부분이라서 주석 처리를 하면 빌드가 되지 않는다.
 
 ```Gemfile
 # frozen_string_literal: true
 
 source "https://rubygems.org"
 
-# gemspec
+gemspec
 
-# gem "html-proofer", "~> 5.0", group: :test
+# gem "github-pages", group: :jekyll_plugins #참고로 이 부분은 github pages가 사용하는 고정된 루비 버전을 의미한다.
+# gem "sass-embedded", "~> 1.98.0"
 
-# platforms :mingw, :x64_mingw, :mswin, :jruby do
-#   gem "tzinfo", ">= 1", "< 3"
-#   gem "tzinfo-data"
-# end
+gem "html-proofer", "~> 5.0", group: :test
 
-gem "github-pages", group: :jekyll_plugins
+platforms :mingw, :x64_mingw, :mswin, :jruby do
+  gem "tzinfo", ">= 1", "< 3"
+  gem "tzinfo-data"
+end
 
-gem "wdm", "~> 0.1.1", :platforms => [:mingw, :x64_mingw, :mswin]
+gem "wdm", "~> 0.2.0", :platforms => [:mingw, :x64_mingw, :mswin]
 ```
 
-이후 다시 install을 하고 생성된 Gemfile.lock을 커밋했다. 이렇게 하니까 4번 오류는 안 뜨더라. 그래서 jekyll.yml의 명시된 버전인 3.1.4로 다시 설치 후 세팅을 진행했다.
+이후 다시 install을 하고 생성된 Gemfile.lock을 커밋했다.
 
 
 ---
