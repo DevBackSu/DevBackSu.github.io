@@ -67,6 +67,14 @@ chcp 65001
 > chcp 는 인코딩 방식을 변경하는 명령어다. cmd에서 기본적으로 사용하는 인코딩 방식은 cp949로 EUC-KR 확장 버전이며, 위 명령어로 설정한 ch65001은 UTF-8이다. 인코딩 방식을 변경하는 이유는 해당 테마가 UTF-8 형식을 사용하고 있기 때문이며, 만약 설정하지 않았다면 사이트 생성 단계에서 **Liquid Exception: Incompatible character encoding**가 발생할 수 있다.
 {: .prompt-tip }
 
+추가로 bundle install 전에 아래 명령어를 순서대로 입력하자.
+
+```bash
+ gem install jekyll bundler
+ 
+ gem install webrick
+```
+
 ## 4. bundle 실행
 
 commend로 저장소 디렉터리 위치로 이동한 후 아래 명령어를 실행한다.
@@ -339,8 +347,27 @@ end
 gem "wdm", "~> 0.2.0", :platforms => [:mingw, :x64_mingw, :mswin]
 ```
 
-이후 다시 install을 하고 생성된 Gemfile.lock을 커밋했다.
+이후 다시 install을 하고 생성된 Gemfile.lock을 커밋했다.<ㅠㄱ/>
+문제는, 위와 같이 진행했음에도 동일한 오류가 발생했다는 것이다. 그래서 필자는 참고했던 블로그에 작성된 루비 버전 (2.6.8-1)로 다시 설치하고 gemfile도 아래와 같이 수정했다.
 
+```Gemfile
+# frozen_string_literal: true
+
+source "https://rubygems.org"
+
+gemspec
+
+gem "html-proofer", "~> 5.0", group: :test
+
+platforms :mingw, :x64_mingw, :mswin, :jruby do
+  gem "tzinfo", ">= 1", "< 3"
+  gem "tzinfo-data"
+end
+
+gem "wdm", "~> 0.2.0", :platforms => [:mingw, :x64_mingw, :mswin]
+```
+
+여전히 오류가 났다! 이번엔 2.6.8이 너무 낮댄다. 그래서 최신 버전 (3.4.7)로 재설치하고 jekyll 설치 -> webrick 설치 -> install -> jekyll serve 확인을 진행했다. (gemfile은 위와 동일하다.) 그리고 push하니까..
 
 ---
 
