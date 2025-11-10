@@ -303,6 +303,8 @@ const pendingSchedules = new Map();
 const pendingEdits = new Map();
 ```
 
+필요한 변수를 설정한다.
+
 
 ## 참고
 
