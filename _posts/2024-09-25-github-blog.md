@@ -52,7 +52,7 @@ description: >-
 Jekyll은 Ruby로 만들어졌기 때문에 해당 프로그래밍 언어를 설치해야 한다. [Ruby Installer](https://rubyinstaller.org/downloads/)에 들어가 필요한 버전을 선택해 다운로드 하자.<br/>
 만약 어떤 버전을 설치해야 할 지 모르겠다면 추천 버전을 설치하거나 선택한 테마가 사용하는 버전을 설치하면 된다.
 <br/>
-테마의 버전은 .github/workflows/starter/pages-deploy.yml에서 확인할 수 있다.
+테마의 버전은 .github/workflows/starter/pages-deploy.yml에서 확인할 수 있다. 되도록 해당 버전을 설치하는 편이 이후의 오류를 방지하기 좋다. 필자는 루비를 업데이트했다가 `The process '/opt/hostedtoolcache/Ruby/3.1.7/x64/bin/bundle' failed with exit code 5` 오류가 발생했다.
 <br/>
 설치 후 **Start Command Prompt with Ruby**를 실행해 저장소가 clone된 디렉터리 위치로 이동한다. 필자의 경우, C 드라이브 내 blog로 clone 했기 때문에 C:\blog. 즉, `cd C:\blog` 로 이동했다.
 
