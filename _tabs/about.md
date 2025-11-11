@@ -32,7 +32,7 @@ Java와 Spring을 주력으로 하는 서버 개발자이며,
 ## Self PR
 
 백엔드 포트폴리오
-<iframe src="https://open-pizza-3d8.notion.site/ebd/2a7e85df852142788cb34e8b1838ed42" width="100%" height="600" frameborder="0" allowfullscreen /><br/>
+<iframe src="https://open-pizza-3d8.notion.site/ebd/2a7e85df852142788cb34e8b1838ed42" width="100%" height="600" frameborder="0" allowfullscreen></iframe><br/>
 
 게임 개발 블로그
-<iframe src="https://devgamesu.tistory.com/" width="100%" height="600" frameborder="0" allowfullscreen /><br/>
+<iframe src="https://devgamesu.tistory.com/" width="100%" height="600" frameborder="0" allowfullscreen></iframe><br/>
