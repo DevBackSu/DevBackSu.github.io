@@ -367,7 +367,7 @@ end
 gem "wdm", "~> 0.2.0", :platforms => [:mingw, :x64_mingw, :mswin]
 ```
 
-여전히 오류가 났다! 이번엔 2.6.8이 너무 낮댄다. 그래서 최신 버전 (3.4.7)로 재설치하고 jekyll 설치 -> webrick 설치 -> install -> jekyll serve 확인을 진행했다. (gemfile은 위와 동일하다.) 그리고 push하니까..
+여전히 오류가 났다! 이번엔 2.6.8이 너무 낮댄다. 그래서 최신 버전 (3.4.7)로 재설치하고 jekyll 설치 -> webrick 설치 -> install -> jekyll serve 확인을 진행했다. (gemfile은 위와 동일하다.) 그리고 push 했지만.. 여전히 동일한 오류가 발생했다. 아예 세팅을 처음부터 다시 해야 하는걸까....
 
 ---
 
