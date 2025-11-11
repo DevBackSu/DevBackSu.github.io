@@ -26,3 +26,13 @@ Java와 Spring을 주력으로 하는 서버 개발자이며,
 
 저는 RDBMS와 Java, Spring에 관심이 많으며,  
 항상 더 나은 개발자가 되기 위해 꾸준히 공부하고 있습니다.    
+
+---
+
+## Self PR
+
+백엔드 포트폴리오
+<iframe src="https://open-pizza-3d8.notion.site/ebd/2a7e85df852142788cb34e8b1838ed42" width="100%" height="600" frameborder="0" allowfullscreen /><br/>
+
+게임 개발 블로그
+<iframe src="https://devgamesu.tistory.com/" width="100%" height="600" frameborder="0" allowfullscreen /><br/>
