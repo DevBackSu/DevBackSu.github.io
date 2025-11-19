@@ -112,9 +112,9 @@ Mockito cannot mock this class: class com.example.roomie.JWT.JwtService.
 
 - TOOL
 
-Shadcn UI : Vercel의 shadcn이 만든 UI 도구. (https://ui.shadcn.com/)
+Shadcn UI : Vercel의 shadcn이 만든 UI 도구. (https://ui.shadcn.com/) -> 미리 컴포넌트를 구성해서 재사용할 수 있도록 하는 것. 일종의 라이브러리를 만드는 느낌인 듯. 원하는대로 컴포넌트 라이브러리를 만들고 스타일링할 수 있음. 오픈 소스. 컴포넌트 라이브러리가 아니기 때문에 npm으로 패키지 설치가 필요하지 않음. import해서 사용하는 건 원본 코드 수정이 어려운데 이건 전체 코드를 붙여넣어주기 때문에 원본 수정이 원활 -> 커마가 용이하다. (참고 : https://soondububu.tistory.com/42) -> 이건 git 블로그에 작성하는 게 좋을 것 같음
 
-twine : 웹에서 제공하는 오픈 소스 제작 툴. 간단한 명령어로 하이퍼텍스트 html 파일을 만들 수 있다. => 텍스트 게임을 만들 수 있는 툴이다. (https://twinery.org/)
+twine : 웹에서 제공하는 오픈 소스 제작 툴. 간단한 명령어로 하이퍼텍스트 html 파일을 만들 수 있다. => 텍스트 게임을 만들 수 있는 툴이다. (https://twinery.org/) -> 이건 티스토리 블로그에 작성하기
 
 
 -----------------------------------------------
